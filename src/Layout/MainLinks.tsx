@@ -2,8 +2,6 @@ import React from "react";
 import {
   IconGitPullRequest,
   IconAlertCircle,
-  IconMessages,
-  IconDatabase,
 } from "@tabler/icons-react";
 import {
   ThemeIcon,

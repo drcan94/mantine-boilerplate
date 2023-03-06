@@ -98,7 +98,7 @@ const Layout = () => {
        
         >
           <Navbar.Section mt={0}>
-            <Brand />
+            <Brand sm={sm} setClose={setClose} />
           </Navbar.Section>
           <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
             <Box py="md">
