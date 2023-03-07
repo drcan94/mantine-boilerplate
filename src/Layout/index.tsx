@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { useClickOutside, useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { Box, NavbarProps, Transition } from "@mantine/core";
+import { useClickOutside, useMediaQuery } from "@mantine/hooks";
+import { Box } from "@mantine/core";
 import { MainLinks } from "./MainLinks";
 import { Brand } from "./Brand";
 import { User } from "./User";
@@ -20,26 +20,29 @@ import {
   ScrollArea,
 } from "@mantine/core";
 
-const Layout = () => {
+const Layout: React.FC = () => {
   const theme = useMantineTheme();
-
-  const xs = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
-  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  const md = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
   const { rtl } = useRtlContext() as GlobalRtlContextType;
+  
+  const xs = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
-  const [opened, { open: setOpen, close: setClose }] = useDisclosure(true);
-
+  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  
+  const md = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+  
+  const [opened, setOpened] = useState(sm ? false : true);
   const [top, setTop] = useState("0");
-
-  useEffect(() => {
-    sm ? setClose() : setOpen();
-  }, [sm, setOpen, setClose]);
-
   const [navbar, setNavbar] = useState<HTMLElement | null>(null);
   const [header, setHeader] = useState<HTMLElement | null>(null);
 
-  useClickOutside(md ? setClose : () => {}, null, [navbar, header]);
+  useClickOutside(() => md && opened && setOpened(false), null, [
+    navbar,
+    header,
+  ]);
+
+  useEffect(() => {
+    sm ? setOpened(false) : setOpened(true);
+  }, [sm]);
 
   useEffect(() => {
     let prevScrollpos = window.scrollY;
@@ -93,16 +96,16 @@ const Layout = () => {
           hidden={!opened}
           sx={{
             overflow: "hidden",
-            transition: "width 300ms ease, min-width 300ms ease, padding 500ms ease",
+            transition:
+              "width 300ms ease, min-width 300ms ease, padding 500ms ease",
           }}
-       
         >
           <Navbar.Section mt={0}>
-            <Brand sm={sm} setClose={setClose} />
+            <Brand sm={sm} setOpened={setOpened} />
           </Navbar.Section>
           <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
             <Box py="md">
-              <MainLinks sm={sm} setClose={setClose} />
+              <MainLinks sm={sm} setOpened={setOpened} />
             </Box>
           </Navbar.Section>
           <Navbar.Section>
@@ -129,7 +132,7 @@ const Layout = () => {
             {/* <MediaQuery largerThan="sm" styles={{ display: "none" }}> */}
             <Burger
               opened={opened}
-              onClick={opened ? setClose : setOpen}
+              onClick={() => setOpened((o) => !o)}
               size="sm"
               color={theme.colors.gray[6]}
               mr="md"

@@ -4,7 +4,7 @@ import { IconSun, IconMoonStars } from "@tabler/icons-react";
 import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 
-export function Brand({sm, setClose} : {sm: boolean, setClose: any}) {
+export function Brand({sm, setOpened} : {sm: boolean, setOpened: any}) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
@@ -22,7 +22,7 @@ export function Brand({sm, setClose} : {sm: boolean, setClose: any}) {
       })}
     >
       <Group position="apart">
-        <Box onClick={() => sm && setClose()} style={{ height: 26 }} component={Link} to={"/"}>
+        <Box onClick={() => sm && setOpened((o: boolean) => !o)} style={{ height: 26 }} component={Link} to={"/"}>
           <Logo colorScheme={colorScheme} />
         </Box>
         <ActionIcon

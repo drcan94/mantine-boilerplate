@@ -16,11 +16,11 @@ interface MainLinkProps {
   color: string;
   label: string;
   path: string;
-  setClose: any;
+  setOpened: any;
   sm: boolean;
 }
 
-function MainLink({ icon, color, label, path, setClose, sm }: MainLinkProps) {
+function MainLink({ icon, color, label, path, setOpened, sm }: MainLinkProps) {
   return (
     <UnstyledButton
       sx={(theme) => ({
@@ -40,7 +40,7 @@ function MainLink({ icon, color, label, path, setClose, sm }: MainLinkProps) {
       })}
       component={Link}
       to={path}
-      onClick={() => sm && setClose()}
+      onClick={() => sm && setOpened((o: boolean) => !o)}
     >
       <Group>
         <ThemeIcon color={color} variant="light">
@@ -81,14 +81,14 @@ const data = [
 ];
 
 export function MainLinks({
-  setClose,
+  setOpened,
   sm,
 }: {
-  setClose: any;
+  setOpened: any;
   sm: boolean;
 }) {
   const links = data.map((link) => (
-    <MainLink sm={sm} setClose={setClose} {...link} key={link.label} />
+    <MainLink sm={sm} setOpened={setOpened} {...link} key={link.label} />
   ));
   return <div>{links}</div>;
 }
