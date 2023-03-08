@@ -6,7 +6,7 @@ import {
 } from "../constants/userConstants";
 
 export const userLoginReducer = (
-  state: any = {userInfo: [], loading: true, error: null},
+  state: any = { userInfo: [], loading: true, error: null },
   action: PayloadAction
 ) => {
   switch (action.type) {
