@@ -38,8 +38,10 @@ const MainLink: React.FC<MainLinkProps> = ({
         "&:hover": {
           backgroundColor:
             theme.colorScheme === "dark"
-              ? theme.colors.dark[6]
-              : theme.colors.gray[0],
+              ? theme.colors.dark[4]
+              : theme.colors.violet[4],
+          color:
+            theme.colorScheme === "dark" ? theme.colors.red[4] : theme.white,
         },
       })}
       component={Link}

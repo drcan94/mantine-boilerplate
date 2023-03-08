@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useClickOutside, useMediaQuery } from "@mantine/hooks";
-import { Box } from "@mantine/core";
+import { Box, MantineColor } from "@mantine/core";
 import { MainLinks } from "./MainLinks";
 import { Brand } from "./Brand";
 import { User } from "./User";
@@ -38,6 +38,14 @@ const Layout: React.FC = () => {
   const [navbar, setNavbar] = useState<HTMLElement | null>(null);
   const [header, setHeader] = useState<HTMLElement | null>(null);
 
+  const borderColor: MantineColor =
+    theme.colorScheme === "dark" ? theme.colors.gray[6] : theme.colors.dark[9];
+
+  const bgColor: MantineColor =
+    theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2];
+
+  const navBgColor: MantineColor =
+    theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.cyan[0];
   useClickOutside(() => md && opened && setOpened(false), null, [
     navbar,
     header,
@@ -70,22 +78,17 @@ const Layout: React.FC = () => {
       layout={xs ? "default" : "alt"}
       styles={{
         main: {
-          background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[6]
-              : theme.colors.gray[0],
+          background: bgColor,
           paddingLeft: opened ? "300px !important" : "0 !important",
           display: xs && opened ? "none" : "initial",
           filter: sm && opened ? "blur(10px)" : "blur(0)",
           transition: "padding-left .3s",
+          minHeight: "100vh",
         },
         root: {
           header: {
             transition: "top .3s linear, left .3s ease",
-            borderBottomColor:
-              theme.colorScheme === "dark"
-                ? theme.colors.gray[6]
-                : theme.colors.dark[9],
+            borderBottomColor: borderColor,
           },
         },
       }}
@@ -97,10 +100,13 @@ const Layout: React.FC = () => {
           p={opened ? "xs" : 0}
           hiddenBreakpoint="xs"
           hidden={!opened}
+          bg={navBgColor}
           sx={{
             overflow: "hidden",
             transition:
               "width 300ms ease, min-width 300ms ease, padding 500ms ease",
+            borderRightColor: rtl ? borderColor : "unset",
+            borderLeftColor: !rtl ? borderColor : "unset",
           }}
         >
           <Navbar.Section mt={0}>

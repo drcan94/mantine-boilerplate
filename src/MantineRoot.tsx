@@ -57,7 +57,6 @@ const MantineRoot: React.FC = () => {
             },
             body: {
               ...theme.fn.fontStyles(),
-
               color:
                 theme.colorScheme === "dark"
                   ? theme.colors.dark[0]

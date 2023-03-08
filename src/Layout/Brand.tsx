@@ -17,7 +17,7 @@ export const Brand: React.FC<{sm: boolean, setOpened: any}> = ({sm, setOpened}) 
         borderBottom: `1px solid ${
           theme.colorScheme === "dark"
             ? theme.colors.dark[4]
-            : theme.colors.gray[2]
+            : theme.colors.violet[6]
         }`,
       })}
     >
