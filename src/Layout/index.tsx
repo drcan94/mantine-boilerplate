@@ -34,10 +34,6 @@ const Layout: React.FC = () => {
     getInitialValueInEffect: false,
   });
 
-  console.log("sm", sm);
-  console.log("md", md);
-  console.log("xs", xs);
-
   const [opened, setOpened] = useState(sm ? false : true);
   const [top, setTop] = useState("0");
   const [navbar, setNavbar] = useState<HTMLElement | null>(null);
