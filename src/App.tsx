@@ -11,6 +11,7 @@ const App: React.FC = () => {
         <Route index element={<HomeScreen />} />
         <Route path="expenses" element={<ExpensesScreen />} />
         <Route path="search" element={<SearchScreen />} />
+        
         {/* Not Found */}
         <Route
           path={"*"}
