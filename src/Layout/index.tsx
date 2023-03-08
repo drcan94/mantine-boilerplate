@@ -23,13 +23,13 @@ import {
 const Layout: React.FC = () => {
   const theme = useMantineTheme();
   const { rtl } = useRtlContext() as GlobalRtlContextType;
-  
-  const xs = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
-  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  
+  const xs = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
+  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`, undefined, {
+    getInitialValueInEffect: false,
+  });
   const md = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
-  
+
   const [opened, setOpened] = useState(sm ? false : true);
   const [top, setTop] = useState("0");
   const [navbar, setNavbar] = useState<HTMLElement | null>(null);
