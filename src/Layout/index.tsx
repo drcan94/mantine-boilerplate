@@ -83,7 +83,6 @@ const Layout: React.FC = () => {
           display: xs && opened ? "none" : "initial",
           filter: sm && opened ? "blur(10px)" : "blur(0)",
           transition: "padding-left .3s",
-          minHeight: "100vh",
         },
         root: {
           header: {
@@ -100,6 +99,7 @@ const Layout: React.FC = () => {
           p={opened ? "xs" : 0}
           hiddenBreakpoint="xs"
           hidden={!opened}
+          height={"calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem))"}
           bg={navBgColor}
           sx={{
             overflow: "hidden",
