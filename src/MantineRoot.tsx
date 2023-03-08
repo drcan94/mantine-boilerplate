@@ -21,7 +21,7 @@ const rtlCache = createEmotionCache({
   stylisPlugins: [rtlPlugin],
 });
 
-const MantineRoot = () => {
+const MantineRoot: React.FC = () => {
   const { rtl, setRtl } = useRtlContext() as GlobalRtlContextType;
 
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
@@ -118,7 +118,7 @@ const MantineRoot = () => {
               "#01010a",
             ],
           },
-          
+
           activeStyles: { transform: "scale(0.95)" },
           components: {
             Button: {

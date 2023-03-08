@@ -14,7 +14,6 @@ import {
   Navbar,
   Header,
   Text,
-  // MediaQuery,
   Burger,
   useMantineTheme,
   ScrollArea,

@@ -4,7 +4,7 @@ import { IconSun, IconMoonStars } from "@tabler/icons-react";
 import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 
-export function Brand({sm, setOpened} : {sm: boolean, setOpened: any}) {
+export const Brand: React.FC<{sm: boolean, setOpened: any}> = ({sm, setOpened}) => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (

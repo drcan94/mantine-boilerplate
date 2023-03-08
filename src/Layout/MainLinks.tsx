@@ -2,13 +2,10 @@ import React from "react";
 import {
   IconGitPullRequest,
   IconAlertCircle,
+  // IconMessages,
+  // IconDatabase
 } from "@tabler/icons-react";
-import {
-  ThemeIcon,
-  UnstyledButton,
-  Group,
-  Text,
-} from "@mantine/core";
+import { ThemeIcon, UnstyledButton, Group, Text } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 interface MainLinkProps {
@@ -20,7 +17,14 @@ interface MainLinkProps {
   sm: boolean;
 }
 
-function MainLink({ icon, color, label, path, setOpened, sm }: MainLinkProps) {
+const MainLink: React.FC<MainLinkProps> = ({
+  icon,
+  color,
+  label,
+  path,
+  setOpened,
+  sm,
+}) => {
   return (
     <UnstyledButton
       sx={(theme) => ({
@@ -51,7 +55,7 @@ function MainLink({ icon, color, label, path, setOpened, sm }: MainLinkProps) {
       </Group>
     </UnstyledButton>
   );
-}
+};
 
 const data = [
   {
@@ -80,13 +84,7 @@ const data = [
   // },
 ];
 
-export function MainLinks({
-  setOpened,
-  sm,
-}: {
-  setOpened: any;
-  sm: boolean;
-}) {
+export function MainLinks({ setOpened, sm }: { setOpened: any; sm: boolean }) {
   const links = data.map((link) => (
     <MainLink sm={sm} setOpened={setOpened} {...link} key={link.label} />
   ));
