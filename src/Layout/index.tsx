@@ -99,7 +99,12 @@ const Layout: React.FC = () => {
           p={opened ? "xs" : 0}
           hiddenBreakpoint="xs"
           hidden={!opened}
-          height={"calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem))"}
+          height={
+            sm
+              ? "calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem))"
+              : "unset"
+          }
+          
           bg={navBgColor}
           sx={{
             overflow: "hidden",
