@@ -9,10 +9,8 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomeScreen />} />
-        
         <Route path="expenses" element={<ExpensesScreen />} />
         <Route path="search" element={<SearchScreen />} />
-        
         {/* Not Found */}
         <Route
           path={"*"}
