@@ -6,7 +6,9 @@ import { useMantineTheme } from "@mantine/core";
 const SearchResult: React.FC<{ result: IUser }> = ({ result }) => {
   const theme = useMantineTheme();
 
-  return <SearchResultContainer theme={theme}>{result.name}</SearchResultContainer>;
+  return (
+    <SearchResultContainer theme={theme}>{result.name}</SearchResultContainer>
+  );
 };
 
 export default SearchResult;
