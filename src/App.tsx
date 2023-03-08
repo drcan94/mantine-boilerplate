@@ -22,7 +22,6 @@ const App: React.FC = () => {
             </div>
           }
         />
-        
       </Route>
     </Routes>
   );
