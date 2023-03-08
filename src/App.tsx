@@ -18,7 +18,7 @@ const App: React.FC = () => {
           path={"*"}
           element={
             <div style={{ display: "flex", justifyContent: "center" }}>
-              Soon here!!
+              Soon here!!!
             </div>
           }
         />
