@@ -103,8 +103,7 @@ const Layout: React.FC = () => {
           bg={navBgColor}
           sx={{
             overflow: "hidden",
-            transition:
-              "width 300ms ease, min-width 300ms ease, padding 500ms ease",
+            transition: "width 300ms ease, min-width 300ms ease, padding 500ms ease",
             borderRightColor: rtl ? borderColor : "unset",
             borderLeftColor: !rtl ? borderColor : "unset",
           }}
