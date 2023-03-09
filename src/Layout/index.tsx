@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useClickOutside, useMediaQuery } from "@mantine/hooks";
-import { Box, MantineColor } from "@mantine/core";
+import { Box, MantineColor, rem } from "@mantine/core";
 import { MainLinks } from "./MainLinks";
 import { Brand } from "./Brand";
 import { User } from "./User";
@@ -62,7 +62,7 @@ const Layout: React.FC = () => {
       if (prevScrollpos > currentScrollPos) {
         setTop("0");
       } else {
-        setTop(md ? "-50px" : "-70px");
+        setTop(md ? rem(-55) : rem(-70));
       }
       prevScrollpos = currentScrollPos;
     };
@@ -125,7 +125,7 @@ const Layout: React.FC = () => {
         <Header
           ref={setHeader}
           top={top}
-          height={{ base: 50, md: 70 }}
+          height={{ base: rem(50), md: rem(70) }}
           p="md"
           dir={rtl ? "rtl" : "ltr"}
         >
