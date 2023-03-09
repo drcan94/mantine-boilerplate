@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useClickOutside, useMediaQuery } from "@mantine/hooks";
-import { Box, MantineColor, rem } from "@mantine/core";
+import { Box, MantineColor } from "@mantine/core";
 import { MainLinks } from "./MainLinks";
 import { Brand } from "./Brand";
 import { User } from "./User";
@@ -62,7 +62,7 @@ const Layout: React.FC = () => {
       if (prevScrollpos > currentScrollPos) {
         setTop("0");
       } else {
-        setTop(md ? rem(-55) : rem(-70));
+        setTop(md ? "-50px" : "-70px");
       }
       prevScrollpos = currentScrollPos;
     };
@@ -99,11 +99,12 @@ const Layout: React.FC = () => {
           p={opened ? "xs" : 0}
           hiddenBreakpoint="xs"
           hidden={!opened}
-          height={`calc(${sm ? "100%" : "100vh"} - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem))`}
+          height={`calc({100%} - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem))`}
           bg={navBgColor}
           sx={{
             overflow: "hidden",
-            transition: "width 300ms ease, min-width 300ms ease, padding 500ms ease",
+            transition:
+              "width 300ms ease, min-width 300ms ease, padding 500ms ease",
             borderRightColor: rtl ? borderColor : "unset",
             borderLeftColor: !rtl ? borderColor : "unset",
           }}
@@ -125,7 +126,7 @@ const Layout: React.FC = () => {
         <Header
           ref={setHeader}
           top={top}
-          height={{ base: rem(50), md: rem(70) }}
+          height={{ base: 50, md: 70 }}
           p="md"
           dir={rtl ? "rtl" : "ltr"}
         >
