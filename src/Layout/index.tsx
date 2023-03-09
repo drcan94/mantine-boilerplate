@@ -62,7 +62,7 @@ const Layout: React.FC = () => {
       if (prevScrollpos > currentScrollPos) {
         setTop("0");
       } else {
-        setTop(md ? "-50px" : "-70px");
+        setTop(md ? "-55px" : "-70px");
       }
       prevScrollpos = currentScrollPos;
     };
