@@ -1,22 +1,22 @@
 import React from "react";
 import { ExpensesContainer } from "./styles";
-import ExpenseItem from "./ExpenseItem";
-import { IExpense } from "./data";
+import NewExpense from "./NewExpense";
+import ExpenseFilter from "./ExpenseFilter";
+import AllExpenses from "./AllExpenses";
 
-const ExpensesComponent: React.FC<{ items: IExpense[] }> = ({ items }) => {
+const ExpensesComponent: React.FC = () => {
+  const [filteredYear, setFilteredYear] = React.useState<string>("all");
   return (
-    <ExpensesContainer>
-      {items.map((item) => {
-        return (
-          <ExpenseItem
-            key={item.id}
-            date={item.date}
-            description={item.description}
-            price={item.price}
-          />
-        );
-      })}
-    </ExpensesContainer>
+    <React.Fragment>
+      <NewExpense />
+      <ExpensesContainer>
+        <ExpenseFilter
+          filteredYear={filteredYear}
+          setFilteredYear={setFilteredYear}
+        />
+        <AllExpenses filteredYear={filteredYear} />
+      </ExpensesContainer>
+    </React.Fragment>
   );
 };
 

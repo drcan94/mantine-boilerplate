@@ -41,7 +41,7 @@ export const User: React.FC = () => {
       >
         <Group spacing={15} noWrap sx={{ justifyContent: "center" }}>
           <Avatar
-            src="https://pbs.twimg.com/profile_images/1619034549769453568/s-JsozvN_400x400.jpg"
+            src="https://pbs.twimg.com/profile_images/1634184437599555584/f2ghrdcW_400x400.jpg"
             radius="xl"
           />
           <Box sx={{ flex: 1 }}>

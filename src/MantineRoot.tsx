@@ -27,7 +27,7 @@ const MantineRoot: React.FC = () => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "color-scheme",
     defaultValue: "light",
-    getInitialValueInEffect: true,
+    getInitialValueInEffect: false,
   });
 
   const toggleColorScheme = (value?: ColorScheme) =>
