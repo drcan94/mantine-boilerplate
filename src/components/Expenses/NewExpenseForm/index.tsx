@@ -1,13 +1,15 @@
 import React from "react";
 import { Actions, Control, Controls } from "./styles";
-import { ExpenseItemProps, IExpense } from "../data";
+import { IExpense } from "../data";
 import { useExpensesContext } from "../../../providers/ExpenseDataProvider/index";
 
-const NewExpenseForm: React.FC = () => {
-  const [title, setTitle] = React.useState("");
-  const [amount, setAmount] = React.useState("");
-  const [date, setDate] = React.useState(new Date().toISOString().slice(0, 10));
+const NewExpenseForm: React.FC<{ setIsOpen: any}> = ({ setIsOpen }) => {
   const { setExpensesData } = useExpensesContext();
+
+  const [title, setTitle] = React.useState("");
+  const [price, setPrice] = React.useState("");
+  const [date, setDate] = React.useState(new Date().toISOString().slice(0, 10));
+
   const inputChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
@@ -16,8 +18,8 @@ const NewExpenseForm: React.FC = () => {
       case "title":
         setTitle(event.target.value);
         break;
-      case "amount":
-        setAmount(event.target.value);
+      case "price":
+        setPrice(event.target.value);
         break;
       case "date":
         setDate(event.target.value);
@@ -27,19 +29,24 @@ const NewExpenseForm: React.FC = () => {
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    if (title.trim().length === 0 || amount.trim().length === 0) {
+    if (title.trim().length === 0 || price.trim().length === 0) {
       return;
     }
-    const expenseData: ExpenseItemProps = {
-      description: title,
-      price: +amount,
+
+    const newExpenseObj: IExpense = {
+      id: Math.random().toString(),
+      title,
+      price: +price,
       date: new Date(date),
     };
-    setExpensesData((prevState: IExpense[]) => {
-      return [...prevState, { ...expenseData, id: Math.random().toString() }];
+
+    setExpensesData((prevExpenses: IExpense[]) => {
+      return [newExpenseObj, ...prevExpenses];
     });
+
+    setIsOpen(false);
     setTitle("");
-    setAmount("");
+    setPrice("");
     setDate(new Date().toISOString().slice(0, 10));
   };
 
@@ -51,12 +58,12 @@ const NewExpenseForm: React.FC = () => {
           <input onChange={inputChangeHandler} id="title" value={title} />
         </Control>
         <Control>
-          <label htmlFor="amount">Amount</label>
+          <label htmlFor="price">Price</label>
           <input
             onChange={inputChangeHandler}
-            id="amount"
-            value={amount}
-            type={"number"}
+            id="price"
+            value={price}
+            type={"price"}
             min={0.01}
             step={0.01}
           />
@@ -74,6 +81,7 @@ const NewExpenseForm: React.FC = () => {
         </Control>
       </Controls>
       <Actions>
+        <button type="button" onClick={() => setIsOpen(false)}>Cancel</button>
         <button type="submit">Add Expense</button>
       </Actions>
     </form>

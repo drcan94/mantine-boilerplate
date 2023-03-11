@@ -1,46 +1,48 @@
+import { Text, useMantineTheme } from "@mantine/core";
 import React from "react";
 import { useExpensesContext } from "../../../providers/ExpenseDataProvider/index";
-import ExpenseItem from '../ExpenseItem/index';
+import ExpenseItem from "../ExpenseItem/index";
+import ExpensesChart from "../ExpensesChart";
 
+const AllExpenses = () => {
+  const theme = useMantineTheme();
+  const { sortedByDateExpenses } = useExpensesContext();
 
-const AllExpenses = ({ filteredYear }: { filteredYear: string }) => {
-  const { expensesData } = useExpensesContext();
+  // conditional rendering
+  if (sortedByDateExpenses.length === 0) {
+    return (
+      <Text
+        align="center"
+        color={
+          theme.colorScheme === "dark"
+            ? theme.colors.green[6]
+            : theme.colors.cyan[2]
+        }
+      >
+        No results
+      </Text>
+    );
+  }
+
   return (
     <React.Fragment>
-      {expensesData
-        .filter((item) => {
-          if (filteredYear === "all") {
-            return true;
-          }
-          return item.date.getFullYear().toString() === filteredYear;
-        })
-        .sort((a, b) => {
-          if (a.date > b.date) {
-            return -1;
-          }
-          if (a.date < b.date) {
-            return 1;
-          }
-          return 0;
-        })
-        .map((item) => {
-          return (
-            <ExpenseItem
-              key={item.id}
-              id={item.id}
-              description={item.description}
-              price={item.price}
-              date={item.date}
-            />
-          );
-        })}
+      <ExpensesChart />
+      {sortedByDateExpenses.map((item) => (
+        <ExpenseItem
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          price={item.price}
+          date={item.date}
+        />
+      ))}
     </React.Fragment>
   );
 };
 
 export default AllExpenses;
 
-// directly filtering in the map function
+// directly filtering in the map function with return null
 // {
 //   expensesData.map((item) => {
 //     if (

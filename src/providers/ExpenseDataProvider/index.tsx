@@ -4,8 +4,10 @@ import { useLocalStorage } from "@mantine/hooks";
 import superjson from "superjson";
 
 export type GlobalExpensesType = {
-  expensesData: IExpense[];
+  sortedByDateExpenses: IExpense[];
   setExpensesData: React.Dispatch<React.SetStateAction<IExpense[]>>;
+  filteredYear: string;
+  setFilteredYear: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const ExpensesContext = createContext<GlobalExpensesType | undefined>(
@@ -17,7 +19,8 @@ interface ProviderProps {
 }
 
 const ExpensesContextProvider: React.FC<ProviderProps> = ({ children }) => {
-  console.log("ExpensesContextProvider");
+  const [filteredYear, setFilteredYear] = React.useState<string>("all");
+
   const [expensesData, setExpensesData] = useLocalStorage<IExpense[]>({
     key: "expensesData",
     defaultValue: expenses,
@@ -26,8 +29,32 @@ const ExpensesContextProvider: React.FC<ProviderProps> = ({ children }) => {
     deserialize: (str) => (str === undefined ? expenses : superjson.parse(str)),
   });
 
+  const filteredByYearExpenses = expensesData.filter((item) => {
+    if (filteredYear === "all") {
+      return true;
+    }
+    return item.date.getFullYear().toString() === filteredYear;
+  });
+
+  const sortedByDateExpenses = filteredByYearExpenses.sort((a, b) => {
+    if (a.date > b.date) {
+      return -1;
+    }
+    if (a.date < b.date) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
-    <ExpensesContext.Provider value={{ expensesData, setExpensesData }}>
+    <ExpensesContext.Provider
+      value={{
+        sortedByDateExpenses,
+        setExpensesData,
+        filteredYear,
+        setFilteredYear,
+      }}
+    >
       {children}
     </ExpensesContext.Provider>
   );

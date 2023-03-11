@@ -26,6 +26,10 @@ export const NewExpenseContainer = styled.div`
       border-color: #510674;
     }
 
+    &:focus {
+      background-color: #7909ad;
+    }
+
     &.alternative {
       color: #220131;
       border-color: transparent;

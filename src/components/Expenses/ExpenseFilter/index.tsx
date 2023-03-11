@@ -1,20 +1,14 @@
 import React from "react";
 import { ExpensesFilterSelect } from "./styles/index";
+import { useExpensesContext } from "../../../providers/ExpenseDataProvider/index";
 import {
   ExpensesFilterContainer,
   ExpensesFilterControl,
   ExpensesFilterLabel,
 } from "./styles/index";
 
-type ExpenseFilterProps = {
-  filteredYear: string;
-  setFilteredYear: (year: string) => void;
-};
-
-const ExpenseFilter: React.FC<ExpenseFilterProps> = ({
-  filteredYear,
-  setFilteredYear,
-}) => {
+const ExpenseFilter: React.FC = () => {
+  const { filteredYear, setFilteredYear } = useExpensesContext();
   return (
     <ExpensesFilterContainer>
       <ExpensesFilterControl>

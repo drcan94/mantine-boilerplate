@@ -19,7 +19,7 @@ export const ExpenseItemContainer = styled.div`
     flex: 1;
   }
 `;
-export const ItemDescription = styled.div`
+export const ItemTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
