@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const NewExpenseContainer = styled.div`
   background-color: #a892ee;
   padding: 1rem;
-  margin: 2rem auto;
+  margin: 0 auto;
   width: 50rem;
   max-width: 95%;
   border-radius: 12px;

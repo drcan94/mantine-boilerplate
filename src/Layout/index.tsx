@@ -62,7 +62,7 @@ const Layout: React.FC = () => {
       if (prevScrollpos > currentScrollPos) {
         setTop("0");
       } else {
-        setTop(md ? "-55px" : "-70px");
+        setTop(md ? "-56px" : "-70px");
       }
       prevScrollpos = currentScrollPos;
     };
@@ -104,9 +104,10 @@ const Layout: React.FC = () => {
           sx={{
             overflow: "hidden",
             transition:
-              "width 300ms ease, min-width 300ms ease, padding 500ms ease",
+              "width 300ms ease, min-width 300ms ease, padding 500ms ease, border 300ms linear",
             borderRightColor: rtl ? borderColor : "unset",
             borderLeftColor: !rtl ? borderColor : "unset",
+            borderWidth: opened ? "1px" : 0,
           }}
         >
           <Navbar.Section mt={0}>
