@@ -1,6 +1,7 @@
 import React from "react";
 import { useExpensesContext } from "../../../providers/ExpenseDataProvider/index";
-import ExpenseItem from "../ExpenseItem/index";
+import ExpenseItem from '../ExpenseItem/index';
+
 
 const AllExpenses = ({ filteredYear }: { filteredYear: string }) => {
   const { expensesData } = useExpensesContext();
@@ -26,6 +27,7 @@ const AllExpenses = ({ filteredYear }: { filteredYear: string }) => {
           return (
             <ExpenseItem
               key={item.id}
+              id={item.id}
               description={item.description}
               price={item.price}
               date={item.date}

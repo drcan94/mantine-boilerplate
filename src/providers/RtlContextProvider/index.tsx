@@ -19,6 +19,7 @@ const RtlContextProvider: React.FC<ProviderProps> = ({ children }) => {
   const [rtl, setRtl] = useLocalStorage<boolean>({
     key: "currentRtl",
     defaultValue: false,
+    getInitialValueInEffect: false,
   });
 
   return (

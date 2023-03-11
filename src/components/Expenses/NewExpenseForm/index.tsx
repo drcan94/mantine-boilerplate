@@ -1,7 +1,7 @@
 import React from "react";
 import { Actions, Control, Controls } from "./styles";
-import { ExpenseItemProps, IExpense } from "../../data";
-import { useExpensesContext } from "../../../../providers/ExpenseDataProvider/index";
+import { ExpenseItemProps, IExpense } from "../data";
+import { useExpensesContext } from "../../../providers/ExpenseDataProvider/index";
 
 const NewExpenseForm: React.FC = () => {
   const [title, setTitle] = React.useState("");

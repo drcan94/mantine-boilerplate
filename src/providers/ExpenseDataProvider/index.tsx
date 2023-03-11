@@ -2,6 +2,7 @@ import React, { createContext, useContext } from "react";
 import { expenses, IExpense } from "../../components/Expenses/data";
 import { useLocalStorage } from "@mantine/hooks";
 import superjson from "superjson";
+
 export type GlobalExpensesType = {
   expensesData: IExpense[];
   setExpensesData: React.Dispatch<React.SetStateAction<IExpense[]>>;
@@ -16,13 +17,13 @@ interface ProviderProps {
 }
 
 const ExpensesContextProvider: React.FC<ProviderProps> = ({ children }) => {
+  console.log("ExpensesContextProvider");
   const [expensesData, setExpensesData] = useLocalStorage<IExpense[]>({
     key: "expensesData",
     defaultValue: expenses,
     getInitialValueInEffect: false,
     serialize: superjson.stringify,
-    deserialize: (str) =>
-      str === undefined ? expenses : superjson.parse(str),
+    deserialize: (str) => (str === undefined ? expenses : superjson.parse(str)),
   });
 
   return (
@@ -36,7 +37,7 @@ export const useExpensesContext = () => {
   const context = useContext(ExpensesContext) as GlobalExpensesType;
   if (context === undefined) {
     throw new Error(
-      "useExpensesContext must be used within a RtlContextProvider"
+      "useExpensesContext must be used within a ExpensesContextProvider"
     );
   }
   return context;
