@@ -10,7 +10,14 @@ export const UsersCard = styled(StyledCard)`
   }
 
   & li {
-    border: 1px solid #ccc;
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${({ theme }) =>
+      theme.colorScheme === "dark"
+        ? theme.colors.yellow[7]
+        : theme.colors.gray[5]};
+    color: ${({ theme }) =>
+      theme.colorScheme === "dark" ? theme.colors.blue[7] : "black"};
     margin: 0.5rem 0;
     padding: 0.5rem;
   }
