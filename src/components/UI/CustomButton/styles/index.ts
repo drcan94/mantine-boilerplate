@@ -8,7 +8,6 @@ export const StyledButton = styled.button<{ theme: MantineTheme }>`
   width: fit-content;
   height: 100%;
   padding: 10px 20px;
-  margin: 15px auto 0 auto;
   border-radius: 10px;
   border: none;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
@@ -17,7 +16,7 @@ export const StyledButton = styled.button<{ theme: MantineTheme }>`
   color: ${({ theme }) =>
     theme.colorScheme === "dark" ? theme.colors.gray[0] : theme.colors.dark[9]};
   font-size: ${({ theme }) => theme.fontSizes.md};
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media (max-width: $) {
     font-size: ${({ theme }) => theme.fontSizes.sm};
   }
   &:hover {

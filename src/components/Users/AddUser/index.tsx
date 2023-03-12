@@ -109,7 +109,7 @@ const AddUser: React.FC<AddUserProps> = ({ setUsers }) => {
             isValid={validateAge(+age)}
             onChange={(event) => setAge(event.target.value)}
           />
-          <CustomButton type="submit">Add User</CustomButton>
+          <CustomButton style={{marginTop: 15}} type="submit">Add User</CustomButton>
         </CustomForm>
       </CustomCard>
     </React.Fragment>

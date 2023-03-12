@@ -2,6 +2,7 @@ import React from "react";
 import { StyledErrorCard, Backdrop } from "./styles";
 import { useMantineTheme } from "@mantine/core";
 import { ErrorType } from "../../Users/AddUser/index";
+import CustomButton from "../CustomButton/index";
 
 type ErrorModalProps = {
   title: string;
@@ -25,12 +26,13 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
         <div className="content">
           {errorList.map((error, index) => (
             <p key={error.fieldName}>
-              {index + 1} - <strong>{error.fieldName}</strong>: {error.errorMessage}
+              {index + 1} - <strong>{error.fieldName}</strong>:{" "}
+              {error.errorMessage}
             </p>
           ))}
         </div>
         <footer className="actions">
-          <button onClick={onConfirm}>Okay</button>
+          <CustomButton onClick={onConfirm}>Okay</CustomButton>
         </footer>
       </StyledErrorCard>
     </React.Fragment>

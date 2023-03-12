@@ -32,6 +32,10 @@ export const StyledErrorCard = styled(StyledCard)`
 
   & .content {
     padding: 1rem;
+    color: ${({ theme }) =>
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[4]
+        : theme.colors.dark[9]};
   }
 
   & .actions {

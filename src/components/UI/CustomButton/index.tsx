@@ -6,6 +6,7 @@ type CustomButtonProps = {
   children: React.ReactNode;
   type?: "button" | "submit" | "reset";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  style?: React.CSSProperties;
 };
 
 const CustomButton: React.FC<CustomButtonProps> = ({
