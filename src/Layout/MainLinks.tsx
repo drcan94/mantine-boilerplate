@@ -2,6 +2,8 @@ import React from "react";
 import {
   IconGitPullRequest,
   IconAlertCircle,
+  IconLetterC,
+  IconUsers,
   // IconMessages,
   // IconDatabase
 } from "@tabler/icons-react";
@@ -72,18 +74,18 @@ const data = [
     label: "Search Bar",
     path: "/search",
   },
-  // {
-  //   icon: <IconMessages size={16} />,
-  //   color: "violet",
-  //   label: "Discussions",
-  //   path: "/expenses",
-  // },
-  // {
-  //   icon: <IconDatabase size={16} />,
-  //   color: "grape",
-  //   label: "Databases",
-  //   path: "/expenses",
-  // },
+  {
+    icon: <IconLetterC size={16} />,
+    color: "violet",
+    label: "Course Goals",
+    path: "/goals",
+  },
+  {
+    icon: <IconUsers size={16} />,
+    color: "grape",
+    label: "Users",
+    path: "/users",
+  },
 ];
 
 export function MainLinks({ setOpened, sm }: { setOpened: any; sm: boolean }) {

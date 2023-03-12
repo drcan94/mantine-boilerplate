@@ -16,11 +16,17 @@ export const ExpensesFilterControl = styled.div`
 
 export const ExpensesFilterLabel = styled.label`
   font-weight: bold;
+  width: 100%;
+  @media (max-width: 40em) {
+    font-size: .8em;
+    font-weight: lighter;
+  }
+
 `;
 
 export const ExpensesFilterSelect = styled.select`
   font: inherit;
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   font-weight: bold;
   border-radius: 6px;
 `;

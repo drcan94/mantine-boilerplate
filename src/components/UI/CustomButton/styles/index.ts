@@ -1,0 +1,37 @@
+import styled from "@emotion/styled";
+import { MantineTheme } from "@mantine/core";
+
+export const StyledButton = styled.button<{ theme: MantineTheme }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+  padding: 10px 20px;
+  margin: 15px auto 0 auto;
+  border-radius: 10px;
+  border: none;
+  box-shadow: ${({ theme }) =>
+    theme.colorScheme === "dark" ? "none" : "0 2px 8px 0 rgba(0, 0, 0, 0.5)"};
+  background-color: ${({ theme }) =>
+    theme.colorScheme === "dark" ? theme.colors.blue[8] : theme.colors.blue[2]};
+  color: ${({ theme }) =>
+    theme.colorScheme === "dark" ? theme.colors.gray[0] : theme.colors.dark[9]};
+  font-size: ${({ theme }) => theme.fontSizes.md};
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.fontSizes.sm};
+  }
+  &:hover {
+    cursor: pointer;
+
+    background-color: ${({ theme }) =>
+      theme.colorScheme === "dark"
+        ? theme.colors.violet[6]
+        : theme.colors.dark[2]};
+
+    color: ${({ theme }) =>
+      theme.colorScheme === "dark"
+        ? theme.colors.yellow[4]
+        : theme.colors.gray[0]};
+  }
+`;

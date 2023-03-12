@@ -4,6 +4,8 @@ import Layout from "./Layout";
 import HomeScreen from "./screens/HomeScreen/index";
 import ExpensesScreen from "./screens/ExpensesScreen";
 import SearchScreen from "./screens/SearchScreen/index";
+import CourseGoalScreen from "./screens/CourseGoalScreen/index";
+import UsersScreen from "./screens/UsersScreen/index";
 const App: React.FC = () => {
   return (
     <Routes>
@@ -11,6 +13,8 @@ const App: React.FC = () => {
         <Route index element={<HomeScreen />} />
         <Route path="expenses" element={<ExpensesScreen />} />
         <Route path="search" element={<SearchScreen />} />
+        <Route path="goals" element={<CourseGoalScreen />} />
+        <Route path="users" element={<UsersScreen />} />
 
         {/* Not Found */}
         <Route

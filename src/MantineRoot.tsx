@@ -74,11 +74,11 @@ const MantineRoot: React.FC = () => {
             },
           },
           fontSizes: {
-            xs: "0.6rem",
-            sm: "0.75rem",
-            md: "0.9rem",
-            lg: "1rem",
-            xl: "1.2rem",
+            xs: ".7rem",
+            sm: ".85rem",
+            md: ".96rem",
+            lg: "1.2rem",
+            xl: "1.4rem",
           },
           breakpoints: {
             xs: "30em",
