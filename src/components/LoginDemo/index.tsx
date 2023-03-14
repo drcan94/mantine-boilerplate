@@ -58,7 +58,7 @@ const LoginDemo: React.FC<{
       const formData = new FormData();
       formData.append("email", enteredEmail);
       formData.append("password", enteredPassword);
-      await loginUser(dispatch, formData);
+      dispatch(loginUser(formData));
 
       // this is the old way of doing it by maximilian
       onLogin(enteredEmail, enteredPassword);
