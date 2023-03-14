@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { MantineTheme } from '@mantine/core';
 
-export const GoalItem = styled.div<{theme: MantineTheme}>`
+export const GoalItem = styled.div`
   margin: 1rem 0;
   background: ${({ theme }) => theme.colorScheme === 'dark' ? theme.colors.orange[8] : theme.colors.green[8]};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);

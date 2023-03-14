@@ -1,24 +1,26 @@
 import styled from "@emotion/styled";
 import { StyledCard } from "../../CustomCard/styles";
 
-export const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
+export const StyledBackdrop = styled.div`
+  position: absolute;
   left: 0;
+  top: 0;
   width: 100%;
-  height: 100vh;
-  z-index: 10;
+  height: 100%;
+  z-index: 102;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(3px);
   overflow-y: hidden;
 `;
 
 export const StyledErrorCard = styled(StyledCard)`
-  position: fixed;
-  top: 30vh;
-  left: 10%;
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translate(-50%, -14%);
   width: 80%;
-  z-index: 100;
+  z-index: 103;
+  max-height: fit-content;
   overflow: hidden;
 
   & header {

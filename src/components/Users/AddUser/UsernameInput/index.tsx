@@ -5,6 +5,7 @@ type UsernameInputProps = {
   isError: boolean;
   isValid: boolean;
   errorMessage: string;
+  refObject?: React.RefObject<HTMLInputElement>;
   onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -14,9 +15,11 @@ export const UsernameInput: React.FC<UsernameInputProps> = ({
   isValid,
   errorMessage,
   onChange,
+  refObject,
 }) => {
   return (
     <CustomInput
+      refObject={refObject}
       id="username"
       label="Name"
       value={value}

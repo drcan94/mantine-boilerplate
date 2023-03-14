@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { InputWrapper } from "./styles";
 import { IconSearch } from "@tabler/icons-react";
-import { useMantineTheme } from '@mantine/core';
 
 interface SearchBarProps {
   setResults: React.Dispatch<React.SetStateAction<any>>;
@@ -9,7 +8,6 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ setResults }) => {
   const [input, setInput] = useState<string>("");
-  const theme = useMantineTheme();
   const fetchData = async (value: string) => {
     // fetch data from API
     try {
@@ -37,7 +35,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ setResults }) => {
   };
 
   return (
-    <InputWrapper theme={theme}>
+    <InputWrapper>
       <IconSearch color="blue" />
       <input
         type="text"

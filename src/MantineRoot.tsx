@@ -62,6 +62,8 @@ const MantineRoot: React.FC = () => {
                   ? theme.colors.dark[0]
                   : theme.black,
               lineHeight: theme.lineHeight,
+              minHeight: "100vh",
+              position: "relative",
             },
           }),
           dir: rtl ? "rtl" : "ltr",

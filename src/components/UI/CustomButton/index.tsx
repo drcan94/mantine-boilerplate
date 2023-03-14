@@ -1,6 +1,5 @@
 import React from "react";
 import { StyledButton } from "./styles";
-import { useMantineTheme } from "@mantine/core";
 
 type CustomButtonProps = {
   children: React.ReactNode;
@@ -14,9 +13,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   type,
   ...props
 }) => {
-  const theme = useMantineTheme();
   return (
-    <StyledButton type={type || "button"} {...props} theme={theme}>
+    <StyledButton type={type || "button"} {...props}>
       {children}
     </StyledButton>
   );

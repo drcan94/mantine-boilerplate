@@ -1,6 +1,5 @@
 import React from "react";
 import { StyledInput, StyledLabel } from "./styles/index";
-import { useMantineTheme } from "@mantine/core";
 
 type Props = {
   id: string;
@@ -10,6 +9,7 @@ type Props = {
   isValid: boolean;
   errorMessage: string;
   type?: string;
+  refObject?: React.RefObject<HTMLInputElement>;
   onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -21,21 +21,20 @@ const CustomInput: React.FC<Props> = ({
   isValid,
   errorMessage,
   type,
+  refObject,
   onChange,
 }) => {
-  const theme = useMantineTheme();
-
   return (
     <React.Fragment>
-      <StyledLabel theme={theme} htmlFor={id}>
-        {label}
-      </StyledLabel>
+      <StyledLabel htmlFor={id}>{label}</StyledLabel>
       <div style={{ maxWidth: "100%" }}>
         {!isValid && isError && (
-          <p style={{ color: "red", fontSize: 11, marginLeft: 6 }}>{errorMessage}</p>
+          <p style={{ color: "red", fontSize: 11, marginLeft: 6 }}>
+            {errorMessage}
+          </p>
         )}
         <StyledInput
-          theme={theme}
+          ref={refObject}
           value={value}
           onChange={onChange}
           type={type || "text"}

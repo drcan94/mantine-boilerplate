@@ -1,12 +1,11 @@
 import styled from "@emotion/styled";
-import { MantineTheme } from "@mantine/core";
 
-export const InputWrapper = styled.div<{ theme: MantineTheme }>`
+export const InputWrapper = styled.div`
   background-color: ${({ theme }) =>
     theme.colorScheme === "dark"
       ? theme.colors.dark[6]
       : theme.colors.indigo[1]};
-  width: 100%;
+  max-width: 100%;
   border-radius: 10px;
   height: 2.5rem;
   padding: 0 15px;

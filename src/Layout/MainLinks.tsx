@@ -4,6 +4,7 @@ import {
   IconAlertCircle,
   IconLetterC,
   IconUsers,
+  IconLogin,
   // IconMessages,
   // IconDatabase
 } from "@tabler/icons-react";
@@ -85,6 +86,12 @@ const data = [
     color: "grape",
     label: "Users",
     path: "/users",
+  },
+  {
+    icon: <IconLogin size={16} />,
+    color: "cyan",
+    label: "Login Demo",
+    path: "/logindemo",
   },
 ];
 

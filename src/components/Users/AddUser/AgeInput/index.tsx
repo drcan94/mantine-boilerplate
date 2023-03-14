@@ -5,6 +5,7 @@ type AgeInputProps = {
   isError: boolean;
   isValid: boolean;
   errorMessage: string;
+  refObject?: React.RefObject<HTMLInputElement>;
   onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -13,11 +14,13 @@ export const AgeInput: React.FC<AgeInputProps> = ({
   isError,
   isValid,
   errorMessage,
+  refObject,
   onChange,
 }) => {
   return (
     <CustomInput
       id="age"
+      refObject={refObject}
       label="Age (Years)"
       value={value}
       type="number"
@@ -28,5 +31,3 @@ export const AgeInput: React.FC<AgeInputProps> = ({
     />
   );
 };
-
-

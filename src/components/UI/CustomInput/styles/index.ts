@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { MantineTheme } from "@mantine/core";
 
-export const StyledLabel = styled.label<{ theme: MantineTheme }>`
+export const StyledLabel = styled.label`
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -9,7 +8,7 @@ export const StyledLabel = styled.label<{ theme: MantineTheme }>`
     theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.blue[8]};
 `;
 
-export const StyledInput = styled.input<{ theme: MantineTheme }>`
+export const StyledInput = styled.input`
   font: inherit;
   display: block;
   width: calc(${({ theme }) => theme.breakpoints.xs} - 14em);

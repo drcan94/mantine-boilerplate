@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import CustomCard from "../../UI/CustomCard";
 import CustomButton from "../../UI/CustomButton";
 import CustomForm from "../../UI/CustomForm";
@@ -27,11 +27,12 @@ const AddUser: React.FC<AddUserProps> = ({ setUsers }) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
 
+  // const userNameRef = useRef<HTMLInputElement>(null);
+  // const ageRef = useRef<HTMLInputElement>(null);
+
   const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);
-
-  const [errorList, setErrorList] = useState<ErrorType[]>([]);
-
   const [isError, setIsError] = useState(false);
+  const [errorList, setErrorList] = useState<ErrorType[]>([]);
 
   // validation functions
   const validateUsername = (value: string) =>
@@ -48,7 +49,8 @@ const AddUser: React.FC<AddUserProps> = ({ setUsers }) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const errors: ErrorType[] = [];
-
+    // console.log("username", userNameRef.current?.value);
+    // console.log("age", ageRef.current?.value);
     !validateUsername(username) &&
       errors.push({
         fieldName: "Name",
@@ -89,13 +91,14 @@ const AddUser: React.FC<AddUserProps> = ({ setUsers }) => {
           errorList={errorList}
           onConfirm={() => {
             setIsOpenErrorModal(false);
-            document.body.style.overflow = "auto";
+            document.body.style.overflow = "visible";
           }}
         />
       )}
       <CustomCard>
         <CustomForm onSubmit={handleSubmit}>
           <UsernameInput
+            // refObject={userNameRef}
             value={username}
             isError={isError}
             errorMessage={userNameErrorMessage}
@@ -104,12 +107,15 @@ const AddUser: React.FC<AddUserProps> = ({ setUsers }) => {
           />
           <AgeInput
             value={age}
+            // refObject={ageRef}
             isError={isError}
             errorMessage={ageErrorMessage}
             isValid={validateAge(+age)}
             onChange={(event) => setAge(event.target.value)}
           />
-          <CustomButton style={{marginTop: 15}} type="submit">Add User</CustomButton>
+          <CustomButton style={{ marginTop: 15 }} type="submit">
+            Add User
+          </CustomButton>
         </CustomForm>
       </CustomCard>
     </React.Fragment>

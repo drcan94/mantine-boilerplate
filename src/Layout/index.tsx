@@ -91,38 +91,6 @@ const Layout: React.FC = () => {
           },
         },
       }}
-      navbarOffsetBreakpoint={"xs"}
-      navbar={
-        <Navbar
-          ref={setNavbar}
-          width={{ xs: opened ? 300 : 0 }}
-          p={opened ? "xs" : 0}
-          hiddenBreakpoint="xs"
-          hidden={!opened}
-          height={`calc({100%} - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem))`}
-          bg={navBgColor}
-          sx={{
-            overflow: "hidden",
-            transition:
-              "width 300ms ease, min-width 300ms ease, padding 500ms ease, border 300ms linear",
-            borderRightColor: rtl ? borderColor : "unset",
-            borderLeftColor: !rtl ? borderColor : "unset",
-            borderWidth: opened ? "1px" : 0,
-          }}
-        >
-          <Navbar.Section mt={0}>
-            <Brand sm={sm} setOpened={setOpened} />
-          </Navbar.Section>
-          <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
-            <Box py="md">
-              <MainLinks sm={sm} setOpened={setOpened} />
-            </Box>
-          </Navbar.Section>
-          <Navbar.Section>
-            <User />
-          </Navbar.Section>
-        </Navbar>
-      }
       header={
         <Header
           ref={setHeader}
@@ -130,6 +98,9 @@ const Layout: React.FC = () => {
           height={{ base: 50, md: 70 }}
           p="md"
           dir={rtl ? "rtl" : "ltr"}
+          sx={{
+            zIndex: 101,
+          }}
         >
           <div
             style={{
@@ -153,6 +124,39 @@ const Layout: React.FC = () => {
             <Text>Application header</Text>
           </div>
         </Header>
+      }
+      navbarOffsetBreakpoint={"xs"}
+      navbar={
+        <Navbar
+          ref={setNavbar}
+          width={{ xs: opened ? 300 : 0 }}
+          p={opened ? "xs" : 0}
+          hiddenBreakpoint="xs"
+          hidden={!opened}
+          height={`calc({100%} - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem))`}
+          bg={navBgColor}
+          sx={{
+            overflow: "hidden",
+            zIndex: 100,
+            transition:
+              "width 300ms ease, min-width 300ms ease, padding 500ms ease, border 300ms linear",
+            borderRightColor: rtl ? borderColor : "unset",
+            borderLeftColor: !rtl ? borderColor : "unset",
+            borderWidth: opened ? "1px" : 0,
+          }}
+        >
+          <Navbar.Section mt={0}>
+            <Brand sm={sm} setOpened={setOpened} />
+          </Navbar.Section>
+          <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
+            <Box py="md">
+              <MainLinks sm={sm} setOpened={setOpened} />
+            </Box>
+          </Navbar.Section>
+          <Navbar.Section>
+            <User />
+          </Navbar.Section>
+        </Navbar>
       }
     />
   );
