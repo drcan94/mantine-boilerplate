@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import classes from "./styles/Login.module.css";
 import DemoCard from "./DemoCard/index";
 import DemoButton from "./DemoButton/index";
@@ -53,14 +52,15 @@ const LoginDemo: React.FC<{
     setEnteredPassword(event.target.value);
   };
 
-  const submitHandler = (event: React.FormEvent) => {
+  const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
       const formData = new FormData();
       formData.append("email", enteredEmail);
       formData.append("password", enteredPassword);
-      let response = loginUser(dispatch, formData); //loginUser action makes the request and handles all the neccessary state changes
-      if (!response) return;
+      await loginUser(dispatch, formData);
+
+      // this is the old way of doing it by maximilian
       onLogin(enteredEmail, enteredPassword);
     } catch (error) {
       console.log(error);

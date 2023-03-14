@@ -7,22 +7,25 @@ export async function loginUser(
 ) {
   try {
     dispatch({ type: "REQUEST_LOGIN" });
-    const response = await axios.post(
+    const {data} = await axios.post(
       `http://127.0.0.1:8000/api/auth/login`,
       formData,
       { headers: { "Content-Type": "application/json" } }
     );
-    let data = response.data;
-    if (data.user) {
-      dispatch({ type: "LOGIN_SUCCESS", payload: {
-        user: data.user,
-        token: data.token
-      } });
-      localStorage.setItem("currentUser", JSON.stringify(data));
-      return data;
-    }
+  
+    dispatch({
+      type: "LOGIN_SUCCESS",
+      payload: data,
+    });
+    localStorage.setItem("currentUser", JSON.stringify(data));
   } catch (error: any) {
-    dispatch({ type: "LOGIN_ERROR", error: error.message });
+    dispatch({
+      type: "LOGIN_ERROR",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
   }
 }
 

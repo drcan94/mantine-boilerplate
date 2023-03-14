@@ -13,14 +13,14 @@ export function useAuthState() {
   return context;
 }
 
-export function useAuthDispatch() {
+export const useAuthDispatch = () => {
   const context = useContext(AuthDispatchContext);
   if (context === undefined) {
     throw new Error("useAuthDispatch must be used within a AuthProvider");
   }
 
   return context;
-}
+};
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

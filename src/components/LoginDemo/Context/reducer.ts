@@ -17,7 +17,7 @@ export type Action =
   | { type: "REQUEST_LOGIN" }
   | { type: "LOGIN_SUCCESS"; payload: { user: User; token: string } }
   | { type: "LOGOUT" }
-  | { type: "LOGIN_ERROR"; error: string };
+  | { type: "LOGIN_ERROR"; payload: string };
 
 let user: User = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser") as string).user
@@ -71,7 +71,7 @@ export const authReducer = (initialState: State, action: Action) => {
       return {
         ...initialState,
         loading: false,
-        errorMessage: action.error,
+        errorMessage: action.payload,
       };
 
     default:
