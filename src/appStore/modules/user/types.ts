@@ -13,11 +13,17 @@ export type UserType = {
   username: string | null;
 };
 
-export type UserState = {
+export type UserInfo = {
   user: UserType;
   token: string;
-  loading: boolean;
-  errorMessage: string | null;
+};
+
+export type InitialState = {
+  userLogin: {
+    userInfo: UserInfo;
+    loading: boolean;
+    error: null;
+  };
 };
 
 export type UserAction =

@@ -3,7 +3,7 @@ import classes from "./styles/Login.module.css";
 import DemoCard from "./DemoCard/index";
 import DemoButton from "./DemoButton/index";
 import styled from "@emotion/styled";
-import { loginUser } from "../../modules/user/actions";
+import { loginUser } from "../../appStore/modules/user/actions";
 import { useAppDispatch } from '../../appStore/hooks';
 
 const StyledLoginCard = styled(DemoCard)`
