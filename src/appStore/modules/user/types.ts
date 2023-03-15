@@ -24,9 +24,7 @@ export type UserLoginType = {
   error: null;
 };
 
-export type InitialState = {
-  userLogin: UserLoginType
-};
+
 
 export type UserAction =
   | { type: typeof USER_LOGIN_REQUEST }

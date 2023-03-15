@@ -1,7 +1,11 @@
 import { configureStore } from "./helpers/configureStore";
 import { combineReducers } from "./helpers/combineReducers";
 import { userLoginReducer } from "./modules/user/reducers";
-import { UserType, InitialState, UserInfo } from "./modules/user/types";
+import { UserType, UserInfo, UserLoginType } from './modules/user/types';
+
+export type InitialState = {
+  userLogin: UserLoginType
+};
 
 export const rootReducer = combineReducers({
   userLogin: userLoginReducer,
