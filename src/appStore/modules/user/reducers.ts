@@ -1,4 +1,5 @@
-import { UserAction, UserLoginType } from './types';
+import { UserAction, UserLoginType } from "./types";
+import { initialUserInfo } from "../../index";
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -9,7 +10,7 @@ import {
 export const userLoginReducer = (
   initialState: UserLoginType,
   action: UserAction
-) => {
+): UserLoginType => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
       return {
@@ -19,29 +20,28 @@ export const userLoginReducer = (
     case USER_LOGIN_SUCCESS:
       return {
         ...initialState,
-        user: action.payload.user,
-        token: action.payload.token,
+        userInfo: {
+          user: action.payload.user,
+          token: action.payload.token,
+        },
         loading: false,
+        error: null,
       };
 
     case USER_LOGIN_FAIL:
       return {
         ...initialState,
+        userInfo: initialUserInfo,
         loading: false,
-        errorMessage: action.payload,
+        error: action.payload,
       };
 
     case USER_LOGOUT:
       return {
         ...initialState,
-        user: {
-          _id: null,
-          name: null,
-          email: null,
-          role: null,
-          username: null,
-        },
-        token: "",
+        userInfo: initialUserInfo,
+        loading: false,
+        error: null,
       };
 
     default:

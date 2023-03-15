@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { UserAction } from "./types";
+import { UserAction, UserInfo } from "./types";
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -20,7 +20,7 @@ export const loginUser =
 
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: data,
+        payload: data as UserInfo,
       });
       localStorage.setItem("currentUser", JSON.stringify(data));
     } catch (error: any) {

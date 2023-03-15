@@ -21,16 +21,14 @@ export type UserInfo = {
 export type UserLoginType = {
   userInfo: UserInfo;
   loading: boolean;
-  error: null;
+  error: string | null;
 };
-
-
 
 export type UserAction =
   | { type: typeof USER_LOGIN_REQUEST }
   | {
       type: typeof USER_LOGIN_SUCCESS;
-      payload: { user: UserType; token: string };
+      payload: UserInfo;
     }
   | { type: typeof USER_LOGIN_FAIL; payload: string }
   | { type: typeof USER_LOGOUT };
