@@ -1,10 +1,10 @@
 import { configureStore } from "./helpers/configureStore";
 import { combineReducers } from "./helpers/combineReducers";
 import { userLoginReducer } from "./modules/user/reducers";
-import { UserType, UserInfo, UserLoginType } from './modules/user/types';
+import { UserType, UserInfo, UserLoginType } from "./modules/user/types";
 
 export type InitialState = {
-  userLogin: UserLoginType
+  userLogin: UserLoginType;
 };
 
 export const rootReducer = combineReducers({
@@ -25,12 +25,15 @@ export const initialUserInfo: UserInfo = {
 };
 
 const userInfo: string = localStorage.getItem("currentUser") as string;
-const userInfoFromLS: UserInfo = userInfo
-  ? JSON.parse(userInfo)
-  : localStorage.setItem("currentUser", JSON.stringify([initialUserInfo]));
+!userInfo &&
+  localStorage.setItem("currentUser", JSON.stringify([initialUserInfo]));
 
 const preloadedState: InitialState = {
-  userLogin: { userInfo: userInfo ? userInfoFromLS : initialUserInfo, loading: false, error: null },
+  userLogin: {
+    userInfo: userInfo ? JSON.parse(userInfo) : initialUserInfo,
+    loading: false,
+    error: null,
+  },
 };
 
 export const store = configureStore({
