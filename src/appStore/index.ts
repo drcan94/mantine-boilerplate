@@ -26,7 +26,7 @@ const userInfoFromLS: UserInfo = userInfo
   : localStorage.setItem("currentUser", JSON.stringify([initialUserInfo]));
 
 const preloadedState: InitialState = {
-  userLogin: { userInfo: userInfoFromLS, loading: false, error: null },
+  userLogin: { userInfo: userInfo ? userInfoFromLS : initialUserInfo, loading: false, error: null },
 };
 
 export const store = configureStore({
