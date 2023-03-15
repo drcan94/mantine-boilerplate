@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import LoginDemo from "../../components/LoginDemo/index";
-import DemoHome from "../../components/LoginDemo/DemoHome/index";
+import LoginDemo from "../../components/LoginDemo";
+import DemoHome from "../../components/LoginDemo/DemoHome";
 import { Text } from "@mantine/core";
 function LoginDemoScreen() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

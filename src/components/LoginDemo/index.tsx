@@ -3,8 +3,8 @@ import classes from "./styles/Login.module.css";
 import DemoCard from "./DemoCard/index";
 import DemoButton from "./DemoButton/index";
 import styled from "@emotion/styled";
-import { useAuthDispatch } from "./Context";
-import { loginUser } from "./Context/actions";
+import { loginUser } from "../../modules/user/actions";
+import { useAppDispatch } from '../../appStore/hooks';
 
 const StyledLoginCard = styled(DemoCard)`
   width: 90%;
@@ -22,7 +22,7 @@ const LoginDemo: React.FC<{
   const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const dispatch = useAuthDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const identifier = setTimeout(() => {

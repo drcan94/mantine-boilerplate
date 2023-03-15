@@ -1,25 +1,12 @@
-export type User = {
-  _id: string | null;
-  name: string | null;
-  email: string | null;
-  role: string | null;
-  username: string | null;
-};
+import { UserAction, UserState, UserType } from "./types";
+import {
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_FAIL,
+  USER_LOGOUT,
+} from "./constants";
 
-export type State = {
-  user: User;
-  token: string;
-  loading: boolean;
-  errorMessage: string | null;
-};
-
-export type Action =
-  | { type: "REQUEST_LOGIN" }
-  | { type: "LOGIN_SUCCESS"; payload: { user: User; token: string } }
-  | { type: "LOGOUT" }
-  | { type: "LOGIN_ERROR"; payload: string };
-
-let user: User = localStorage.getItem("currentUser")
+let user: UserType = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser") as string).user
   : {
       _id: null,
@@ -33,28 +20,39 @@ let token = localStorage.getItem("currentUser")
   ? (JSON.parse(localStorage.getItem("currentUser") as string).token as string)
   : "";
 
-export const initialState: State = {
+export const initialState: UserState = {
   user,
   token,
   loading: false,
   errorMessage: null,
 };
 
-export const authReducer = (initialState: State, action: Action) => {
+export const userLoginReducer = (
+  initialState: UserState,
+  action: UserAction
+) => {
   switch (action.type) {
-    case "REQUEST_LOGIN":
+    case USER_LOGIN_REQUEST:
       return {
         ...initialState,
         loading: true,
       };
-    case "LOGIN_SUCCESS":
+    case USER_LOGIN_SUCCESS:
       return {
         ...initialState,
         user: action.payload.user,
         token: action.payload.token,
         loading: false,
       };
-    case "LOGOUT":
+
+    case USER_LOGIN_FAIL:
+      return {
+        ...initialState,
+        loading: false,
+        errorMessage: action.payload,
+      };
+
+    case USER_LOGOUT:
       return {
         ...initialState,
         user: {
@@ -65,13 +63,6 @@ export const authReducer = (initialState: State, action: Action) => {
           username: null,
         },
         token: "",
-      };
-
-    case "LOGIN_ERROR":
-      return {
-        ...initialState,
-        loading: false,
-        errorMessage: action.payload,
       };
 
     default:

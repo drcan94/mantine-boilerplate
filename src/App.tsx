@@ -7,7 +7,6 @@ import SearchScreen from "./screens/SearchScreen/index";
 import CourseGoalScreen from "./screens/CourseGoalScreen/index";
 import UsersScreen from "./screens/UsersScreen/index";
 import LoginDemoScreen from "./screens/LoginDemoScreen/index";
-import { AuthProvider } from "./components/LoginDemo/Context/index";
 const App: React.FC = () => {
   return (
     <Routes>
@@ -17,14 +16,7 @@ const App: React.FC = () => {
         <Route path="search" element={<SearchScreen />} />
         <Route path="goals" element={<CourseGoalScreen />} />
         <Route path="users" element={<UsersScreen />} />
-        <Route
-          path="logindemo"
-          element={
-            <AuthProvider>
-              <LoginDemoScreen />
-            </AuthProvider>
-          }
-        />
+        <Route path="logindemo" element={<LoginDemoScreen />} />
 
         {/* Not Found */}
         <Route
