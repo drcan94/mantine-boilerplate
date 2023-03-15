@@ -12,7 +12,16 @@ export const configureStore = ({
   middlewares = [],
 }: ConfiguredStore) => {
   const defaultMiddlewares = [asyncMiddleware];
-  const combinedMiddlewares = [...defaultMiddlewares, ...middlewares];
+
+  // Check if the user-supplied middlewares already include asyncMiddleware
+  const includesAsyncMiddleware = middlewares.some(
+    (middleware) => middleware === asyncMiddleware
+  );
+
+  // If asyncMiddleware is not included, add it to the middlewares
+  const combinedMiddlewares = includesAsyncMiddleware
+    ? middlewares
+    : [...defaultMiddlewares, ...middlewares];
 
   const store: any = {
     getState: () => preloadedState || reducer(undefined, { type: "" }),
