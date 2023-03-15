@@ -18,12 +18,14 @@ export type UserInfo = {
   token: string;
 };
 
+export type UserLoginType = {
+  userInfo: UserInfo;
+  loading: boolean;
+  error: null;
+};
+
 export type InitialState = {
-  userLogin: {
-    userInfo: UserInfo;
-    loading: boolean;
-    error: null;
-  };
+  userLogin: UserLoginType
 };
 
 export type UserAction =

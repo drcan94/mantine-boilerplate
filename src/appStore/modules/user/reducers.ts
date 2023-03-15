@@ -1,4 +1,4 @@
-import { UserAction, UserState } from "./types";
+import { UserAction, UserLoginType } from './types';
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -7,7 +7,7 @@ import {
 } from "./constants";
 
 export const userLoginReducer = (
-  initialState: UserState,
+  initialState: UserLoginType,
   action: UserAction
 ) => {
   switch (action.type) {
