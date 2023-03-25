@@ -11,6 +11,7 @@ export const rootReducer = combineReducers({
   userLogin: userLoginReducer,
 });
 
+
 export const initialUser: UserType = {
   _id: null,
   name: null,

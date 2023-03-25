@@ -26,15 +26,15 @@ const CourseGoalScreen: React.FC = () => {
     );
   };
 
-  let content = (
-    <p style={{ textAlign: "center" }}>No goals found. Maybe add one?</p>
-  );
+  // let content = (
+  //   <p style={{ textAlign: "center" }}>No goals found. Maybe add one?</p>
+  // );
 
-  if (courseGoals.length > 0) {
-    content = (
-      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
-    );
-  }
+  // if (courseGoals.length > 0) {
+  //   content = (
+  //     <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
+  //   );
+  // }
 
   return (
     <React.Fragment>
@@ -49,14 +49,15 @@ const CourseGoalScreen: React.FC = () => {
         <CourseInput onAddGoal={addGoalHandler} />
       </GoalForm>
       <Goals>
-        {content}
-        {/* {courseGoals.length > 0 && (
+        {/* {content} */}
+        {courseGoals.length > 0 ? (
           <CourseGoalList
             items={courseGoals}
             onDeleteItem={deleteItemHandler}
           />
-        ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-        } */}
+        ) : (
+          <p style={{ textAlign: "center" }}>No goals found. Maybe add one?</p>
+        )}
       </Goals>
     </React.Fragment>
   );

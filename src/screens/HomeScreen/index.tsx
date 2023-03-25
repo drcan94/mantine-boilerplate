@@ -1,13 +1,11 @@
-import { Text } from "@mantine/core";
 import React, { useEffect } from "react";
 import { HomeScreenContainer } from "./styles";
 import { useAppState } from "../../appStore/hooks";
 
 const HomeScreen: React.FC = () => {
-  const state = useAppState();
-  const { userLogin } = state;
+  const { userLogin } = useAppState(); // global state
   const { userInfo, error, loading } = userLogin;
-  const { user, token } = userInfo
+  const { user, token } = userInfo;
 
   useEffect(() => {
     console.log("user", user);
@@ -16,11 +14,7 @@ const HomeScreen: React.FC = () => {
     console.log("loading", loading);
   }, [user, token, error, loading]);
 
-  return (
-    <HomeScreenContainer>
-      <Text align="center">React with Maximilian Schwarzmüller</Text>
-    </HomeScreenContainer>
-  );
+  return <HomeScreenContainer></HomeScreenContainer>;
 };
 
 export default HomeScreen;

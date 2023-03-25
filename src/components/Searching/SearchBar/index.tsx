@@ -15,6 +15,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ setResults }) => {
         "https://jsonplaceholder.typicode.com/users"
       );
       const json = await response.json();
+      
       const filteredData = json.filter((user: any) => {
         return (
           value &&
