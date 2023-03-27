@@ -7,7 +7,8 @@ import { loginUser } from "../../appStore/modules/user/actions";
 import { useAppDispatch } from "../../appStore/hooks";
 import { MantineTheme } from "@mantine/core";
 import { emailReducer } from "./emailReducer";
-import { passwordReducer } from './passwordReducer';
+import { passwordReducer } from "./passwordReducer";
+import { Actions, FormControl, FormInput } from "./styles";
 
 const StyledLoginCard = styled(DemoCard)<{ theme: MantineTheme }>`
   width: 90%;
@@ -25,12 +26,12 @@ const StyledLoginCard = styled(DemoCard)<{ theme: MantineTheme }>`
 const LoginDemo: React.FC<{
   onLogin: (email: string, password: string) => void;
 }> = ({ onLogin }) => {
-  const [email, emailDispatch] = useReducer(emailReducer, {
+  const [email, dispatchEmail] = useReducer(emailReducer, {
     value: "",
     isValid: null,
   });
 
-  const [password, passwordDispatch] = useReducer(passwordReducer, {
+  const [password, dispatchPassword] = useReducer(passwordReducer, {
     value: "",
     isValid: null,
   });
@@ -50,21 +51,21 @@ const LoginDemo: React.FC<{
   }, [email.value, password.value]);
 
   const validateEmailHandler = () => {
-    emailDispatch({
+    dispatchEmail({
       type: "SET_EMAIL_VALIDITY",
       isValid: email.value.includes("@"),
     });
   };
 
   const validatePasswordHandler = () => {
-    passwordDispatch({
+    dispatchPassword({
       type: "SET_PASSWORD_VALIDITY",
       isValid: password.value.trim().length >= 6,
     });
   };
 
   const emailChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    emailDispatch({
+    dispatchEmail({
       type: "SET_EMAIL",
       value: event.target.value,
     });
@@ -73,7 +74,7 @@ const LoginDemo: React.FC<{
   const passwordChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    passwordDispatch({
+    dispatchPassword({
       type: "SET_PASSWORD",
       value: event.target.value,
     });
@@ -97,43 +98,39 @@ const LoginDemo: React.FC<{
   return (
     <StyledLoginCard>
       <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            email.isValid === false ? classes.invalid : ""
-          }`}
-        >
+        <FormControl>
           <label htmlFor="email">E-Mail</label>
-          <input
+          <FormInput
+            isValid={email.isValid}
             type="email"
             id="email"
             value={email.value}
             onChange={emailChangeHandler}
             onBlur={validateEmailHandler}
           />
-        </div>
-        <div
-          className={`${classes.control} ${
-            password.isValid === false ? classes.invalid : ""
-          }`}
-        >
+        </FormControl>
+        <FormControl>
           <label htmlFor="password">Password</label>
-          <input
+          <FormInput
+            isValid={password.isValid}
             type="password"
             id="password"
             value={password.value}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
           />
-        </div>
-        <div className={classes.actions}>
+        </FormControl>
+        <Actions>
           <DemoButton
             type="submit"
-            className={classes.btn}
             disabled={!formIsValid}
+            onClick={() => {
+              return "sada"
+            }}
           >
             Login
           </DemoButton>
-        </div>
+        </Actions>
       </form>
     </StyledLoginCard>
   );

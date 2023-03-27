@@ -9,8 +9,10 @@ import {
 } from "./constants";
 
 export const loginUser =
-  (formData: FormData) => async (dispatch: React.Dispatch<UserAction>) => {
+  (formData: FormData) =>
+  async (dispatch: React.Dispatch<UserAction>, getState: any) => {
     try {
+      console.log(getState()); // this is working
       dispatch({ type: USER_LOGIN_REQUEST });
       const { data } = await axios.post(
         `http://127.0.0.1:8000/api/auth/login`,
@@ -22,6 +24,7 @@ export const loginUser =
         type: USER_LOGIN_SUCCESS,
         payload: data as UserInfo,
       });
+
       localStorage.setItem("currentUser", JSON.stringify(data));
     } catch (error: any) {
       dispatch({

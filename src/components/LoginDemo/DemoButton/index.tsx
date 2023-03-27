@@ -1,17 +1,22 @@
 import React from "react";
+import { StyledDemoButton } from "./styles";
 
-import classes from "./Button.module.css";
+interface IDemoButton {
+  type?: "button" | "submit";
+  onClick?: any;
+  disabled?: boolean;
+  children: React.ReactNode;
+}
 
-const DemoButton: React.FC<any> = (props) => {
+const DemoButton: React.FC<IDemoButton> = ({
+  type,
+  children,
+  ...props
+}) => {
   return (
-    <button
-      type={props.type || "button"}
-      className={`${classes.button} ${props.className}`}
-      onClick={props.onClick}
-      disabled={props.disabled}
-    >
-      {props.children}
-    </button>
+    <StyledDemoButton type={type || "button"} {...props}>
+      {children}
+    </StyledDemoButton>
   );
 };
 
